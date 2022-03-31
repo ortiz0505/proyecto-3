@@ -1,0 +1,151 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId            String
+
+  @@unique([provider, providerAccountId])
+}
+
+model Comment {
+  id         String    @id @default(cuid())
+  comment    String
+  response   Response?
+  responseId String?
+  admin      User      @relation(fields: [userId], references: [id])
+  userId     String
+  document   Document? @relation(fields: [documentId], references: [id])
+  documentId String?
+  createAt   DateTime  @default(now())
+  updateAt   DateTime  @updatedAt
+}
+
+model Document {
+  id             String        @id @default(cuid())
+  url            String
+  status         Enum_Status
+  comment        Comment[]
+  typeDocument   TypeDocument? @relation(fields: [typeDocumentId], references: [id])
+  typeDocumentId String?
+  createBy       User          @relation(fields: [userId], references: [id])
+  userId         String
+  createAt       DateTime      @default(now())
+  updateAt       DateTime      @updatedAt
+}
+
+model Page {
+  id       String   @id @default(cuid())
+  name     String
+  path     String   @unique
+  roles    Role[]
+  createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+}
+
+model Profile {
+  id             String   @id @default(cuid())
+  customName     String
+  customImage    String
+  location       String
+  phone          String
+  identification String
+  user           User?    @relation(fields: [userId], references: [id])
+  userId         String?  @unique
+  createAt       DateTime @default(now())
+  updateAt       DateTime @updatedAt
+}
+
+model Response {
+  id        String   @id @default(cuid())
+  response  String?
+  comment   Comment  @relation(fields: [commentId], references: [id])
+  commentId String   @unique
+  createAt  DateTime @default(now())
+  updateAt  DateTime @updatedAt
+}
+
+model Role {
+  id       String    @id @default(cuid())
+  name     Enum_Role
+  users    User[]
+  page     Page[]
+  createAt DateTime  @default(now())
+  updateAt DateTime  @updatedAt
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Template {
+  id             String       @id @default(cuid())
+  name           String
+  typeDocument   TypeDocument @relation(fields: [typeDocumentId], references: [id])
+  typeDocumentId String
+  createAt       DateTime     @default(now())
+  updateAt       DateTime     @updatedAt
+}
+
+model TypeDocument {
+  id        String     @id @default(cuid())
+  name      String
+  format    String
+  template  Template[]
+  documents Document[]
+  createAt  DateTime   @default(now())
+  updateAt  DateTime   @updatedAt
+}
+
+model User {
+  id            String     @id @default(cuid())
+  email         String?    @unique
+  name          String?
+  image         String?
+  role          Role?      @relation(fields: [roleId], references: [id])
+  roleId        String?
+  emailVerified DateTime?
+  comments      Comment[]
+  documents     Document[]
+  profile       Profile?
+  accounts      Account[]
+  sessions      Session[]
+  createAt      DateTime   @default(now())
+  updateAt      DateTime   @updatedAt
+}
+
+enum Enum_Role {
+  Admin
+  Documenter
+  Developer
+}
+
+enum Enum_Status {
+  Accepted
+  Pending
+  Rejected
+}

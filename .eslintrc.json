@@ -1,3 +1,65 @@
 {
-  "extends": "next/core-web-vitals"
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "airbnb-typescript",
+    "prettier",
+    "next"
+  ],
+  "plugins": ["react", "@typescript-eslint", "prettier", "typescript"],
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [".*"]
+      }
+    ],
+    "prefer-destructuring": "warn",
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/require-default-props": "off",
+    "no-use-before-define": "off",
+    "arrow-body-style": "off",
+    "no-unused-vars": [
+      2,
+      { "args": "after-used", "argsIgnorePattern": "^(parent|args)" }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      2,
+      { "args": "after-used", "argsIgnorePattern": "^(parent|args)" }
+    ],
+    "no-underscore-dangle": "off",
+    "import/prefer-default-export": "off",
+    "no-nested-ternary": "warn",
+    "import/no-unresolved": "off",
+    "react/jsx-props-no-spreading": "off",
+    "@typescript-eslint/no-use-before-define": "off",
+    "@typescript-eslint/return-await": "off",
+    "react/jsx-no-useless-fragment": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "no-console": "error",
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight"],
+        "aspects": ["invalidHref", "preferButton"]
+      }
+    ],
+    "react/function-component-definition": "off"
+  }
 }
