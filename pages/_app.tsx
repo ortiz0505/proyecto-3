@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session}>
       <Head>
-        <title>{pageProps.name} | Proyecto 3</title>
+        <title>{pageProps.page} | Proyecto 3</title>
       </Head>
       <PrivateLayout>
         {pageProps.auth ? <Component {...pageProps} /> : <NotAuthorized />}

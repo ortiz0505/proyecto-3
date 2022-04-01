@@ -5,8 +5,8 @@ export const getServerSideProps = async (context) => ({
   props: { ...(await matchRoles(context)) },
 });
 
-const test = () => {
-  return <div>test</div>;
+const tipoDocumento = () => {
+  return <div>tipoDocumento</div>;
 };
 
-export default test;
+export default tipoDocumento;
