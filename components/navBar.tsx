@@ -1,28 +1,22 @@
 import React, { useState } from 'react';
 import { matchRoles } from 'utils/matchRoles';
-// import Navbar from '@components/navBar';
 
 export const getServerSideProps = async (context) => ({
   props: { ...(await matchRoles(context)) },
 });
 
-const tipoDocumento = () => {
+const navBar = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [showOptions, setShowOptions] = useState(false);
   const handleClick = () => {
     setShowOptions(!showOptions);
   };
+
   return (
     <div>
       {showOptions && (
         <div className='fixed h-screen bg-[#306D81] w-64'>
-          <div
-            onClick={handleClick}
-            role='button'
-            className='p-5 flex flex-row-reverse'
-            tabIndex={0}
-            aria-hidden='true'
-          >
+          <div className='p-5 flex flex-row-reverse'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               className='h-7 w-7 fill-[#E6F4F1] hover:fill-[#FFF6ED] cursor-pointer'
@@ -49,53 +43,19 @@ const tipoDocumento = () => {
           </ul>
         </div>
       )}
-      <nav className='flex justify-between py-3 px-14 bg-[#306D81] w-full'>
-        <div
-          onClick={handleClick}
-          role='button'
-          className='p-2 place-content-end'
-          tabIndex={0}
-          aria-hidden='true'
-        >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            className='h-7 w-7 fill-[#E6F4F1] hover:fill-[#FFF6ED] cursor-pointer'
-            viewBox='0 0 20 20'
-            fill='currentColor'
-          >
-            <path
-              fillRule='evenodd'
-              d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z'
-              clipRule='evenodd'
-            />
-          </svg>
-        </div>
-        <div className='flex items-center'>user</div>
-      </nav>
-      {/* contenido */}
-      <div className='flex-grow py-3 px-14 bg-[#FFF6ED]'>
-        <div className='container p-4'>
-          <label htmlFor='text' className='block'>
-            <span className='block text-sm font-medium text-[#306D81]'>
-              Label
-            </span>
-            <input
-              type='text'
-              name='text'
-              className='mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-[#67A1B6] focus:ring-[#67A1B6] block w-full rounded-md sm:text-sm focus:ring-1'
-              placeholder='Ingrese texto'
-            />
-          </label>
+      <div className='pl-16 h-screen w-full flex flex-col sm:pl-64 '>
+        <header className='p-3 bg-[#306D81]'>
           <button
+            onClick={handleClick}
             type='button'
-            className='rounded-lg p-2 bg-[#306D81] hover:bg-[#67A1B6] text-sm text-[#E6F4F1] hover:text-[#FFF6ED] font-bold'
+            className='w-full buttonsppl'
           >
-            Save Changes
+            Realizar un seguimiento
           </button>
-        </div>
+        </header>
       </div>
     </div>
   );
 };
 
-export default tipoDocumento;
+export default navBar;
