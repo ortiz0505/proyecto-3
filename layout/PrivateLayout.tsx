@@ -1,5 +1,7 @@
 import React from 'react';
 import { signIn, useSession } from 'next-auth/react';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 const PrivateLayout = ({ children }: any) => {
   const { data: session, status } = useSession();
@@ -13,7 +15,12 @@ const PrivateLayout = ({ children }: any) => {
     return <div>Loading...</div>;
   }
 
-  return <div>{children}</div>;
+  return (
+    <div>
+      {children}
+      <ToastContainer />
+    </div>
+  );
 };
 
 export default PrivateLayout;

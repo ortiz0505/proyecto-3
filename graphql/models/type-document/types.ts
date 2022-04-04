@@ -5,7 +5,7 @@ const typeDocumentTypes = gql`
     id: ID
     name: String
     format: String
-    template: [Template]
+    template: String
     documents: [Document]
     createAt: Date
     updateAt: Date
@@ -18,6 +18,7 @@ const typeDocumentTypes = gql`
   input TypeDocumentCreateInput {
     name: String
     format: String
+    template: String
   }
 
   input TypeDocumentUpdateInput {

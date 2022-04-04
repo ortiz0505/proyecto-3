@@ -2,13 +2,6 @@ import prisma from 'config/prisma';
 
 const TypeDocumentResolvers = {
   TypeDocument: {
-    template: async (parent, args) => {
-      return await prisma.template.findMany({
-        where: {
-          typeDocumentId: parent.id,
-        },
-      });
-    },
     documents: async (parent, args) => {
       return await prisma.document.findMany({
         where: {

@@ -102,20 +102,11 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model Template {
-  id             String       @id @default(cuid())
-  name           String
-  typeDocument   TypeDocument @relation(fields: [typeDocumentId], references: [id])
-  typeDocumentId String
-  createAt       DateTime     @default(now())
-  updateAt       DateTime     @updatedAt
-}
-
 model TypeDocument {
   id        String     @id @default(cuid())
   name      String
   format    String
-  template  Template[]
+  template  String
   documents Document[]
   createAt  DateTime   @default(now())
   updateAt  DateTime   @updatedAt

@@ -5,7 +5,6 @@ import { PageTypes } from 'graphql/models/page/types';
 import { ProfileTypes } from 'graphql/models/profile/types';
 import { ResponseTypes } from 'graphql/models/response/types';
 import { RoleTypes } from 'graphql/models/role/types';
-import { TemplateTypes } from 'graphql/models/template/types';
 import { typeDocumentTypes } from 'graphql/models/type-document/types';
 import { UserTypes } from 'graphql/models/user/types';
 
@@ -29,7 +28,6 @@ export const types = [
   ProfileTypes,
   ResponseTypes,
   RoleTypes,
-  TemplateTypes,
   typeDocumentTypes,
   UserTypes,
 ];

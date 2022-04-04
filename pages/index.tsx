@@ -1,6 +1,7 @@
 import PrivateComponent from '@components/PrivateComponent';
 import type { NextPage } from 'next';
 import { signOut } from 'next-auth/react';
+import { toast } from 'react-toastify';
 import { matchRoles } from 'utils/matchRoles';
 
 export const getServerSideProps = async (context) => ({
@@ -21,6 +22,14 @@ const Home: NextPage = () => {
         }}
       >
         Logout
+      </button>
+      <button
+        type='button'
+        onClick={() => {
+          toast.success('hola');
+        }}
+      >
+        Aceptar
       </button>
     </div>
   );
