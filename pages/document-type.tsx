@@ -43,27 +43,58 @@ const DocumentType = () => {
   };
   return (
     <div>
-      <h1>Tipo de documento</h1>
-      <form ref={form} onChange={updateFormData} onSubmit={submitForm}>
-        <label htmlFor='name'>
-          <span>Nombre del tipo de documento</span>
-          <input name='name' required />
-        </label>
-        <label htmlFor='format'>
-          <span>Formato</span>
-          <input name='format' required />
-        </label>
-        <span>template</span>
-        <input readOnly defaultValue={templateName} required />
-        <FileUpload
-          folder='document-type'
-          resourceType='auto'
-          text='Subir archivo'
-          successCallBack={successCallBack}
-          failureCallBack={failureCallBack}
-        />
-        <button type='submit'>Crear tipo documento</button>
-      </form>
+      <div className='flex-grow py-3 px-14 bg-[#FFF6ED]'>
+        <div className='container p-4'>
+          <div className='pplTitles'>Tipo de documento</div>
+          <form ref={form} onChange={updateFormData} onSubmit={submitForm}>
+            <div className='flex flex-row'>
+              <label htmlFor='name' className='block basis-1/3 mx-2'>
+                <span className='pplLabels'>Nombre del tipo de documento</span>
+                <input
+                  type='text'
+                  name='name'
+                  className='pplInputTxt'
+                  placeholder='Ingrese el tipo de documento'
+                  required
+                />
+              </label>
+              <label htmlFor='format' className='block basis-1/3 mx-2'>
+                <span className='pplLabels'>Formato</span>
+                <input
+                  type='text'
+                  name='format'
+                  className='pplInputTxt'
+                  placeholder='Ingrese el formato'
+                  required
+                />
+              </label>
+              <label htmlFor='template' className='block basis-1/3 mx-2'>
+                <span className='pplLabels'>template</span>
+                <input
+                  type='text'
+                  name='template'
+                  className='pplInputTxt'
+                  readOnly
+                  defaultValue={templateName}
+                  required
+                />
+              </label>
+            </div>
+            <div className='flex flex-row my-5'>
+              <FileUpload
+                folder='document-type'
+                resourceType='auto'
+                text='Subir archivo'
+                successCallBack={successCallBack}
+                failureCallBack={failureCallBack}
+              />
+              <button type='submit' className='pplButtons mx-2'>
+                Crear tipo documento
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };

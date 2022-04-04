@@ -1,3 +1,60 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#cloudinary_upload_button{
+    @apply text-sm font-bold mx-2
+}
+
+.liSideBar{
+    @apply w-full p-3 text-base font-bold hover:bg-[#67A1B6] text-[#E6F4F1] hover:text-[#FFF6ED] border-2 border-x-[#306D81] border-y-[#306D81] border-t-[#E6F4F1] hover:border-[#67A1B6] cursor-pointer
+}
+
+.navBar{
+    @apply flex justify-between py-3 px-14 bg-[#306D81] w-full
+}
+
+.sideBar{
+    @apply fixed h-screen bg-[#306D81] w-64
+}
+
+.pplButtons{
+    @apply rounded-lg p-2 bg-[#306D81] hover:bg-[#67A1B6] text-sm text-[#E6F4F1] hover:text-[#FFF6ED] font-bold
+}
+
+.pplInputTxt{
+    @apply mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-[#67A1B6] focus:ring-[#67A1B6] block w-full rounded-md sm:text-sm focus:ring-1
+}
+
+.pplLabels{
+    @apply block text-sm font-medium text-[#306D81]
+}
+
+.pplTitles{
+    @apply text-xl font-bold my-5 text-[#306D81]
+}
+
+/* loadingpage */
+.loader {
+	border-top-color: #3498db;
+	-webkit-animation: spinner 1.5s linear infinite;
+	animation: spinner 1.5s linear infinite;
+}
+
+@-webkit-keyframes spinner {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes spinner {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

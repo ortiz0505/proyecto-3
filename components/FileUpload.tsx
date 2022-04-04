@@ -17,12 +17,13 @@ const FileUpload = ({
         uploadPreset='fnfu6lvi'
         buttonText={text}
         style={{
-          color: 'white',
+          color: '#E6F4F1',
           border: 'none',
           width: '120px',
-          backgroundColor: 'green',
-          borderRadius: '4px',
-          height: '25px',
+          padding: '4px',
+          backgroundColor: '#306D81',
+          borderRadius: '8px',
+          height: '40px',
         }}
         folder={folder}
         cropping={false}
