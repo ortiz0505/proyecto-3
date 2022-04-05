@@ -2,7 +2,7 @@ import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import React, { useState } from 'react';
 
-const navBar = () => {
+const NavBar = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { data: session } = useSession();
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -76,4 +76,4 @@ const navBar = () => {
   );
 };
 
-export default navBar;
+export default NavBar;
