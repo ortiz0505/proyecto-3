@@ -38,7 +38,7 @@ const DocumentType = () => {
     setTemplate(e.info.secure_url);
     setTemplateName(e.info.original_filename);
   };
-  const failureCallBack = (e) => {
+  const failureCallBack = () => {
     toast.error('Error al cargar el archivo');
   };
   return (
