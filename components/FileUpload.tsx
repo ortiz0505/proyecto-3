@@ -16,15 +16,17 @@ const FileUpload = ({
         cloudName='ortiz0505'
         uploadPreset='fnfu6lvi'
         buttonText={text}
-        style={{
-          color: '#E6F4F1',
-          border: 'none',
-          width: '120px',
-          padding: '4px',
-          backgroundColor: '#306D81',
-          borderRadius: '8px',
-          height: '40px',
-        }}
+        style={
+          {
+            // color: '#E6F4F1',
+            // border: 'none',
+            // width: '120px',
+            // padding: '4px',
+            // backgroundColor: '#306D81',
+            // borderRadius: '8px',
+            // height: '40px',
+          }
+        }
         folder={folder}
         cropping={false}
         autoClose={false}

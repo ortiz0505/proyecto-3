@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 #cloudinary_upload_button{
-    @apply text-sm font-bold mx-2
+    @apply w-full rounded-lg p-2 bg-[#306D81] hover:bg-[#67A1B6] text-sm text-[#E6F4F1] hover:text-[#FFF6ED] font-bold m-2;
 }
 
 .liSideBar{
-    @apply w-full p-3 text-base font-bold hover:bg-[#67A1B6] text-[#E6F4F1] hover:text-[#FFF6ED] border-2 border-x-[#306D81] border-y-[#306D81] border-t-[#E6F4F1] hover:border-[#67A1B6] cursor-pointer
+    @apply w-full lg:w-1/4 lg:mx-5 p-3 text-base font-bold hover:bg-[#67A1B6] text-[#E6F4F1] hover:text-[#FFF6ED] border-2 border-x-[#306D81] border-y-[#306D81] border-t-[#E6F4F1] hover:border-[#67A1B6] cursor-pointer
 }
 
 .navBar{
@@ -19,21 +19,56 @@
 }
 
 .pplButtons{
-    @apply rounded-lg p-2 bg-[#306D81] hover:bg-[#67A1B6] text-sm text-[#E6F4F1] hover:text-[#FFF6ED] font-bold
+    @apply w-full lg:w-1/4 lg:mx-5 rounded-lg p-2 bg-[#306D81] hover:bg-[#67A1B6] text-sm text-[#E6F4F1] hover:text-[#FFF6ED] font-bold
 }
 
 .pplInputTxt{
     @apply mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-[#67A1B6] focus:ring-[#67A1B6] block w-full rounded-md sm:text-sm focus:ring-1
 }
 
-.pplLabels{
+.pplSpanLabels{
     @apply block text-sm font-medium text-[#306D81]
+}
+
+.pplLabels{
+	@apply block basis-1/2 lg:basis-1/3 my-2 mx-2 md:my-0
 }
 
 .pplTitles{
     @apply text-xl font-bold my-5 text-[#306D81]
 }
 
+.pplContainers{
+	@apply py-3 px-14 bg-[#e6f4f159]
+}
+
+.subContainers{
+	@apply bg-[#E6F4F1] rounded-lg p-2 shadow-xl
+}
+
+.cardBody{
+	@apply flex flex-col rounded-lg shadow-xl text-center my-2 md:mr-2 w-full md:w-1/3 lg:w-1/4
+}
+
+.cardTop{
+	@apply flex flex-col rounded-t-lg bg-[#E6F4F1] font-normal text-[#306D81] px-2 py-5
+}
+
+.cardButton{
+	@apply bg-[#306D81] rounded-b-lg hover:bg-[#67A1B6] font-medium text-[#E6F4F1] cursor-pointer p-2
+}
+
+.cardBodyP{
+	@apply flex flex-col rounded-lg shadow-xl my-2 md:mr-2 w-full md:w-1/2 lg:w-1/3
+}
+
+.cardTopP{
+	@apply grid grid-cols-2 gap-1 rounded-t-lg bg-[#E6F4F1] font-normal text-[#306D81] p-4
+}
+
+.cardButtonP{
+	@apply bg-[#306D81] rounded-b-lg font-medium text-center text-[#E6F4F1] p-2
+}
 /* loadingpage */
 .loader {
 	border-top-color: #3498db;

@@ -42,59 +42,57 @@ const DocumentType = () => {
     toast.error('Error al cargar el archivo');
   };
   return (
-    <div>
-      <div className='flex-grow py-3 px-14 bg-[#FFF6ED]'>
-        <div className='container p-4'>
-          <div className='pplTitles'>Tipo de documento</div>
-          <form ref={form} onChange={updateFormData} onSubmit={submitForm}>
-            <div className='flex flex-row'>
-              <label htmlFor='name' className='block basis-1/3 mx-2'>
-                <span className='pplLabels'>Nombre del tipo de documento</span>
-                <input
-                  type='text'
-                  name='name'
-                  className='pplInputTxt'
-                  placeholder='Ingrese el tipo de documento'
-                  required
-                />
-              </label>
-              <label htmlFor='format' className='block basis-1/3 mx-2'>
-                <span className='pplLabels'>Formato</span>
-                <input
-                  type='text'
-                  name='format'
-                  className='pplInputTxt'
-                  placeholder='Ingrese el formato'
-                  required
-                />
-              </label>
-              <label htmlFor='template' className='block basis-1/3 mx-2'>
-                <span className='pplLabels'>template</span>
-                <input
-                  type='text'
-                  name='template'
-                  className='pplInputTxt'
-                  readOnly
-                  defaultValue={templateName}
-                  required
-                />
-              </label>
-            </div>
-            <div className='flex flex-row my-5'>
-              <FileUpload
-                folder='document-type'
-                resourceType='auto'
-                text='Subir archivo'
-                successCallBack={successCallBack}
-                failureCallBack={failureCallBack}
-              />
-              <button type='submit' className='pplButtons mx-2'>
-                Crear tipo documento
-              </button>
-            </div>
-          </form>
-        </div>
+    <div className='pplContainers'>
+      <div className='pplTitles text-center md:text-left'>
+        Nuevo tipo de documento
       </div>
+      <form ref={form} onChange={updateFormData} onSubmit={submitForm}>
+        <div className='flex flex-col md:flex-row'>
+          <label htmlFor='name' className='pplLabels'>
+            <span className='pplSpanLabels'>Nombre del tipo de documento</span>
+            <input
+              type='text'
+              name='name'
+              className='pplInputTxt'
+              placeholder='Ingrese el tipo de documento'
+              required
+            />
+          </label>
+          <label htmlFor='format' className='pplLabels'>
+            <span className='pplSpanLabels'>Formato</span>
+            <input
+              type='text'
+              name='format'
+              className='pplInputTxt'
+              placeholder='Ingrese el formato'
+              required
+            />
+          </label>
+          <label htmlFor='template' className='pplLabels'>
+            <span className='pplSpanLabels'>Plantilla</span>
+            <input
+              type='text'
+              name='template'
+              className='pplInputTxt'
+              readOnly
+              defaultValue={templateName}
+              required
+            />
+          </label>
+        </div>
+        <div className='flex flex-col lg:flex-row my-5'>
+          <FileUpload
+            folder='document-type'
+            resourceType='auto'
+            text='Subir archivo'
+            successCallBack={successCallBack}
+            failureCallBack={failureCallBack}
+          />
+          <button type='submit' className='pplButtons m-2'>
+            Crear tipo documento
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
