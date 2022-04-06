@@ -7,8 +7,8 @@ const typeDocumentTypes = gql`
     format: String
     template: String
     documents: [Document]
-    createAt: Date
-    updateAt: Date
+    createdAt: Date
+    updatedAt: Date
   }
 
   input TypeDocumentFilterId {

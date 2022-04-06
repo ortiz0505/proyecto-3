@@ -6,8 +6,8 @@ const PageTypes = gql`
     name: String
     path: String
     roles: [Role]
-    createAt: Date
-    updateAt: Date
+    createdAt: Date
+    updatedAt: Date
   }
 
   input PageFilterId {

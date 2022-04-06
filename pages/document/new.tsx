@@ -20,6 +20,7 @@ const NewDocument = () => {
   const [type, setType] = useState<String>();
   const [template, setTemplate] = useState();
   const [templateName, setTemplateName] = useState();
+  const [name, setName] = useState<String>();
   const successCallBack = (e) => {
     setTemplate(e.info.secure_url);
     setTemplateName(e.info.original_filename);
@@ -33,6 +34,7 @@ const NewDocument = () => {
       await createDocument({
         variables: {
           data: {
+            name,
             url: template,
             status: 'Pending',
             typeDocumentId: type,
@@ -48,6 +50,16 @@ const NewDocument = () => {
   return (
     <div>
       <form onSubmit={submitForm}>
+        <label htmlFor='name'>
+          <span>Nombre del documento: </span>
+          <input
+            name='name'
+            placeholder='Certificado 00'
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+        </label>
         <select
           onChange={(e) => {
             setType(e.target.value);

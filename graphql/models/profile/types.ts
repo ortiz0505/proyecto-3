@@ -10,8 +10,8 @@ const ProfileTypes = gql`
     identification: String
     user: User
     userId: String
-    createAt: Date
-    updateAt: Date
+    createdAt: Date
+    updatedAt: Date
   }
 
   input ProfileFilterId {

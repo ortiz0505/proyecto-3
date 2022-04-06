@@ -6,8 +6,8 @@ const ResponseTypes = gql`
     response: String
     comment: Comment
     commentId: String
-    createAt: Date
-    updateAt: Date
+    createdAt: Date
+    updatedAt: Date
   }
   input ResponseFilterId {
     id: String!

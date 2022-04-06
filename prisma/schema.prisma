@@ -37,30 +37,31 @@ model Comment {
   userId     String
   document   Document? @relation(fields: [documentId], references: [id])
   documentId String?
-  createAt   DateTime  @default(now())
-  updateAt   DateTime  @updatedAt
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 }
 
 model Document {
   id             String        @id @default(cuid())
+  name           String
   url            String
   status         Enum_Status
   comment        Comment[]
   typeDocument   TypeDocument? @relation(fields: [typeDocumentId], references: [id])
   typeDocumentId String?
-  createBy       User          @relation(fields: [userId], references: [id])
+  createdBy      User          @relation(fields: [userId], references: [id])
   userId         String
-  createAt       DateTime      @default(now())
-  updateAt       DateTime      @updatedAt
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
 }
 
 model Page {
-  id       String   @id @default(cuid())
-  name     String
-  path     String   @unique
-  roles    Role[]
-  createAt DateTime @default(now())
-  updateAt DateTime @updatedAt
+  id        String   @id @default(cuid())
+  name      String
+  path      String   @unique
+  roles     Role[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Profile {
@@ -72,8 +73,8 @@ model Profile {
   identification String
   user           User?    @relation(fields: [userId], references: [id])
   userId         String?  @unique
-  createAt       DateTime @default(now())
-  updateAt       DateTime @updatedAt
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }
 
 model Response {
@@ -81,17 +82,17 @@ model Response {
   response  String?
   comment   Comment  @relation(fields: [commentId], references: [id])
   commentId String   @unique
-  createAt  DateTime @default(now())
-  updateAt  DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Role {
-  id       String    @id @default(cuid())
-  name     Enum_Role
-  users    User[]
-  page     Page[]
-  createAt DateTime  @default(now())
-  updateAt DateTime  @updatedAt
+  id        String    @id @default(cuid())
+  name      Enum_Role
+  users     User[]
+  page      Page[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 model Session {
@@ -108,8 +109,8 @@ model TypeDocument {
   format    String
   template  String
   documents Document[]
-  createAt  DateTime   @default(now())
-  updateAt  DateTime   @updatedAt
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
 }
 
 model User {
@@ -125,8 +126,8 @@ model User {
   profile       Profile?
   accounts      Account[]
   sessions      Session[]
-  createAt      DateTime   @default(now())
-  updateAt      DateTime   @updatedAt
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
 }
 
 enum Enum_Role {

@@ -11,8 +11,8 @@ const UserTypes = gql`
     comments: [Comment]
     documents: [Document]
     profile: Profile
-    createAt: Date
-    updateAt: Date
+    createdAt: Date
+    updatedAt: Date
   }
 
   input UserFilterId {

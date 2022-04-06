@@ -7,6 +7,7 @@ import { ResponseTypes } from 'graphql/models/response/types';
 import { RoleTypes } from 'graphql/models/role/types';
 import { typeDocumentTypes } from 'graphql/models/type-document/types';
 import { UserTypes } from 'graphql/models/user/types';
+import { ChartTypes } from 'graphql/models/chart/types';
 
 const genericTypes = gql`
   scalar Date
@@ -30,4 +31,5 @@ export const types = [
   RoleTypes,
   typeDocumentTypes,
   UserTypes,
+  ChartTypes,
 ];

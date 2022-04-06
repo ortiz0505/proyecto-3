@@ -3,15 +3,16 @@ import { gql } from 'apollo-server-micro';
 const DocumentTypes = gql`
   type Document {
     id: ID
+    name: String
     url: String
     status: Enum_Status
     comment: [Comment]
     typeDocument: TypeDocument
     typeDocumentId: String
-    createBy: User
+    createdBy: User
     userId: String
-    createAt: Date
-    updateAt: Date
+    createdAt: Date
+    updatedAt: Date
   }
 
   enum Enum_Status {
@@ -26,6 +27,7 @@ const DocumentTypes = gql`
 
   input DocumentCreateInput {
     url: String!
+    name: String!
     status: Enum_Status!
     typeDocumentId: String
     userId: String
@@ -41,6 +43,7 @@ const DocumentTypes = gql`
   type Query {
     getDocuments: [Document]
     getDocument(where: DocumentFilterId!): Document
+    getPendingDocument: [Document]
   }
 
   type Mutation {

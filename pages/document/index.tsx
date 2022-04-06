@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { GET_DOCUMENT_TYPE } from 'graphql/queries/document-type';
 import { matchRoles } from 'utils/matchRoles';
 import { useQuery } from '@apollo/client';
 import Loading from '@components/Loading';
 import PrivateComponent from '@components/PrivateComponent';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+import { GET_CHART } from 'graphql/queries/chart';
+// import ReactApexChart from 'react-apexcharts';
+
+const ReactApexChart = dynamic(
+  () => {
+    return import('react-apexcharts');
+  },
+  { ssr: false }
+);
 
 export const getServerSideProps = async (context) => ({
   props: { ...(await matchRoles(context)) },
@@ -14,8 +24,37 @@ const Index = () => {
   const { data, loading } = useQuery(GET_DOCUMENT_TYPE, {
     fetchPolicy: 'cache-and-network',
   });
+  const { data: dataChart, loading: loadingChart } = useQuery(GET_CHART);
+  const [options, setOptions] = useState<any>({
+    chart: {
+      width: 380,
+      type: 'pie',
+    },
+    labels: [],
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200,
+          },
+          legend: {
+            position: 'bottom',
+          },
+        },
+      },
+    ],
+  });
+  const [series, setSeries] = useState<any>([]);
 
-  if (loading) return <Loading />;
+  useEffect(() => {
+    if (dataChart) {
+      setSeries(dataChart.getChartOptions.series);
+      setOptions({ ...options, labels: dataChart.getChartOptions.labels });
+    }
+  }, [dataChart, options]);
+
+  if (loading || loadingChart) return <Loading />;
   return (
     <div className='flex flex-col items-center p-10'>
       <h2 className='my-4 text-3xl font-bold text-gray-800'>
@@ -43,6 +82,14 @@ const Index = () => {
           Crear documento
         </button>
       </Link>
+      <div id='chart'>
+        <ReactApexChart
+          options={options}
+          series={series}
+          type='pie'
+          width={380}
+        />
+      </div>
     </div>
   );
 };

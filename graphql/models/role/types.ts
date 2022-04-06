@@ -6,8 +6,8 @@ const RoleTypes = gql`
     name: Enum_Role
     users: [User]
     page: [Page]
-    createAt: Date
-    updateAt: Date
+    createdAt: Date
+    updatedAt: Date
   }
 
   enum Enum_Role {

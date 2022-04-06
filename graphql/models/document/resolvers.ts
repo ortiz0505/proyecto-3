@@ -16,7 +16,7 @@ const DocumentResolvers = {
         },
       });
     },
-    createBy: async (parent, args) => {
+    createdBy: async (parent, args) => {
       return await prisma.user.findUnique({
         where: {
           id: parent.userId,
@@ -32,6 +32,13 @@ const DocumentResolvers = {
     getDocument: async (parent, args) => {
       return await prisma.document.findUnique({
         where: { ...args.where },
+      });
+    },
+    getPendingDocument: async (parents, args) => {
+      return await prisma.document.findMany({
+        where: {
+          status: 'Pending',
+        },
       });
     },
   },
