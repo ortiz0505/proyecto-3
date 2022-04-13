@@ -1,13 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { GET_DOCUMENT_TYPE } from 'graphql/queries/document-type';
 import { matchRoles } from 'utils/matchRoles';
 import { useQuery } from '@apollo/client';
-import Loading from '@components/Loading';
+import Loading from 'components/Loading';
 import PrivateComponent from '@components/PrivateComponent';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { GET_CHART } from 'graphql/queries/chart';
-// import ReactApexChart from 'react-apexcharts';
 
 const ReactApexChart = dynamic(
   () => {
@@ -52,7 +52,7 @@ const Index = () => {
       setSeries(dataChart.getChartOptions.series);
       setOptions({ ...options, labels: dataChart.getChartOptions.labels });
     }
-  }, [dataChart, options]);
+  }, [dataChart]);
 
   if (loading || loadingChart) return <Loading />;
   return (

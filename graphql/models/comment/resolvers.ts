@@ -3,21 +3,21 @@ import prisma from 'config/prisma';
 const CommentResolvers = {
   Comment: {
     response: async (parent, args) => {
-      await prisma.response.findUnique({
+      return await prisma.response.findUnique({
         where: {
-          id: parent.responseId,
+          commentId: parent.id,
         },
       });
     },
     admin: async (parent, args) => {
-      await prisma.user.findUnique({
+      return await prisma.user.findUnique({
         where: {
           id: parent.userId,
         },
       });
     },
     document: async (parent, args) => {
-      await prisma.document.findUnique({
+      return await prisma.document.findUnique({
         where: {
           id: parent.documentId,
         },
@@ -27,10 +27,10 @@ const CommentResolvers = {
 
   Query: {
     getComments: async (parent, args) => {
-      await prisma.comment.findMany({});
+      return await prisma.comment.findMany({});
     },
     getComment: async (parent, args) => {
-      await prisma.comment.findUnique({
+      return await prisma.comment.findUnique({
         where: { ...args.where },
       });
     },
@@ -38,14 +38,14 @@ const CommentResolvers = {
 
   Mutation: {
     createComment: async (parent, args) => {
-      await prisma.comment.create({
+      return await prisma.comment.create({
         data: {
           ...args.data,
         },
       });
     },
     updateComment: async (parent, args) => {
-      await prisma.comment.update({
+      return await prisma.comment.update({
         where: { ...args.where },
         data: {
           ...args.data,
@@ -53,7 +53,7 @@ const CommentResolvers = {
       });
     },
     deleteComment: async (parent, args) => {
-      await prisma.comment.delete({
+      return await prisma.comment.delete({
         where: { ...args.where },
       });
     },

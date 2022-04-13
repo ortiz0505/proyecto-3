@@ -38,7 +38,7 @@ const NewDocument = () => {
             url: template,
             status: 'Pending',
             typeDocumentId: type,
-            userId: session.user.id,
+            userId: session.userId,
           },
         },
       });

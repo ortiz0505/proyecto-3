@@ -8,4 +8,12 @@ const CREATE_DOCUMENT = gql`
   }
 `;
 
-export { CREATE_DOCUMENT };
+const UPDATE_DOCUMENT = gql`
+  mutation Mutation($where: DocumentFilterId, $data: DocumentUpdateInput) {
+    updateDocument(where: $where, data: $data) {
+      id
+    }
+  }
+`;
+
+export { CREATE_DOCUMENT, UPDATE_DOCUMENT };

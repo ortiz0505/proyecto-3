@@ -41,6 +41,21 @@ const DocumentResolvers = {
         },
       });
     },
+    getRejectedDocument: async (parents, args) => {
+      return await prisma.document.findMany({
+        where: {
+          userId: args.where.id,
+          status: 'Rejected',
+        },
+      });
+    },
+    getRejectedDocuments: async (parents, args) => {
+      return await prisma.document.findMany({
+        where: {
+          status: 'Rejected',
+        },
+      });
+    },
   },
 
   Mutation: {

@@ -34,6 +34,7 @@ const DocumentTypes = gql`
   }
 
   input DocumentUpdateInput {
+    name: StringEditField
     url: StringEditField
     status: StringEditField
     typeDocumentId: StringEditField
@@ -44,6 +45,8 @@ const DocumentTypes = gql`
     getDocuments: [Document]
     getDocument(where: DocumentFilterId!): Document
     getPendingDocument: [Document]
+    getRejectedDocument(where: DocumentFilterId!): [Document]
+    getRejectedDocuments: [Document]
   }
 
   type Mutation {

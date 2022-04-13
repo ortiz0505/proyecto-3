@@ -5,7 +5,6 @@ const CommentTypes = gql`
     id: ID
     comment: String!
     response: Response
-    responseId: String
     admin: User
     userId: String
     document: Document
@@ -26,7 +25,6 @@ const CommentTypes = gql`
 
   input CommentUpdateInput {
     comment: StringEditField!
-    responseId: StringEditField!
     userId: StringEditField!
     documentId: StringEditField!
   }
