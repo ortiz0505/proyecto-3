@@ -1,6 +1,8 @@
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState } from 'react';
+import PrivateComponent from './PrivateComponent';
 
 const NavBar = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -17,7 +19,7 @@ const NavBar = () => {
           <div
             onClick={handleClick}
             role='button'
-            className='p-5 flex flex-row-reverse'
+            className='p-5 ml-11 flex'
             tabIndex={0}
             aria-hidden='true'
           >
@@ -35,9 +37,13 @@ const NavBar = () => {
             </svg>
           </div>
           <ul>
-            <li className='liSideBar'>Link 1</li>
+            <li className='liSideBar'>
+              <Link href='document'>Documentos</Link>
+            </li>
             <li className='liSideBar'>Link 2</li>
-            <li className='liSideBar'>Link 3</li>
+            <PrivateComponent roleList={['Admin']}>
+              <li className='liSideBar'>Administración</li>
+            </PrivateComponent>
           </ul>
         </div>
       )}
@@ -45,7 +51,7 @@ const NavBar = () => {
         <div
           onClick={handleClick}
           role='button'
-          className='p-2 place-content-end'
+          className='p-2 md:hidden'
           tabIndex={0}
           aria-hidden='true'
         >
@@ -61,6 +67,17 @@ const NavBar = () => {
               clipRule='evenodd'
             />
           </svg>
+        </div>
+        <div className='hidden md:flex'>
+          <ul className='flex flex-row items-center'>
+            <li className='liNavBar'>
+              <Link href='document'>Documentos</Link>
+            </li>
+            <li className='liNavBar'>Link 2</li>
+            <PrivateComponent roleList={['Admin']}>
+              <li className='liNavBar'>Administración</li>
+            </PrivateComponent>
+          </ul>
         </div>
         <div className='flex items-center'>
           <Image

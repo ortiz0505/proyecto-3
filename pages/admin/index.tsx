@@ -16,12 +16,32 @@ const IndexAdmin = () => {
   if (loading) return <Loading />;
 
   return (
-    <div>
-      <div>Lista de usuarios</div>
-      <div className='flex flex-col md:flex-row'>
-        {data?.getUsers.map((user) => (
-          <ListUsers key={user.id} user={user} />
-        ))}
+    <div className='pplContainers'>
+      <div className='pplTitles'>Lista de usuarios</div>
+      <div className='overflow-x-auto shadow-lg rounded-lg'>
+        <table className='w-full text-left text-gray-500 rounded-lg'>
+          <thead className='text-sm bg-[#306D81] text-[#E6F4F1]'>
+            <tr>
+              <th scope='col' className='px-6 py-3'>
+                Nombre
+              </th>
+              <th scope='col' className='px-6 py-3'>
+                Email
+              </th>
+              <th scope='col' className='px-6 py-3'>
+                Rol
+              </th>
+              <th scope='col' className='px-6 py-3'>
+                .
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {data?.getUsers.map((user) => (
+              <ListUsers key={user.id} user={user} />
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
@@ -29,15 +49,16 @@ const IndexAdmin = () => {
 
 const ListUsers = ({ user }) => {
   return (
-    <div className='flex flex-col'>
-      <span>Nombre:</span>
-      <span>{user.name}:</span>
-      <span>Email:</span>
-      <span>{user.email}</span>
-      <span>Rol:</span>
-      <span>{user.role.name}</span>
-      <button type='button'>Editar rol</button>
-    </div>
+    <tr className='bg-[#E6F4F1]'>
+      <th scope='row' className='px-6 py-4 font-medium'>
+        {user.name}
+      </th>
+      <td className='px-6 py-4'>{user.email}</td>
+      <td className='px-6 py-4'>{user.role.name}</td>
+      <td className='px-6 py-4 text-right hover:text-black cursor-pointer'>
+        Editar rol
+      </td>
+    </tr>
   );
 };
 

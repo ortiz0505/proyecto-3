@@ -7,7 +7,11 @@
 }
 
 .liSideBar{
-    @apply w-full lg:w-1/4 lg:mx-5 p-3 text-base font-bold hover:bg-[#67A1B6] text-[#E6F4F1] hover:text-[#FFF6ED] border-2 border-x-[#306D81] border-y-[#306D81] border-t-[#E6F4F1] hover:border-[#67A1B6] cursor-pointer
+    @apply w-full p-3 text-base font-bold hover:bg-[#67A1B6] text-center text-[#E6F4F1] hover:text-[#FFF6ED] border-2 border-x-[#306D81] border-y-[#306D81] border-t-[#E6F4F1] hover:border-[#67A1B6] cursor-pointer
+}
+
+.liNavBar{
+    @apply p-3 text-base font-bold text-center text-[#E6F4F1] hover:text-[#fff6ed6e] cursor-pointer
 }
 
 .navBar{
@@ -15,7 +19,11 @@
 }
 
 .sideBar{
-    @apply fixed h-screen bg-[#306D81] w-64
+    @apply fixed h-screen bg-[#306D81] w-full
+}
+
+.profileButtons{
+	@apply w-full rounded-lg p-2 bg-[#306D81] hover:bg-[#67A1B6] text-sm text-[#E6F4F1] hover:text-[#FFF6ED] font-bold cursor-pointer
 }
 
 .pplButtons{
@@ -69,6 +77,23 @@
 .cardButtonP{
 	@apply bg-[#306D81] rounded-b-lg font-medium text-center text-[#E6F4F1] p-2
 }
+
+.approvalButtons{
+	@apply w-1/3 hover:font-bold
+}
+
+.dialogTitles{
+	@apply m-2 text-xl font-bold my-2 text-[#306D81]
+}
+
+.dialogButtons{
+	@apply w-1/2 mx-1 rounded-lg p-2 bg-[#306D81] hover:bg-[#67A1B6] text-sm text-[#E6F4F1] hover:text-[#FFF6ED] font-bold
+}
+
+.dialogInput{
+	@apply m-2 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-[#67A1B6] focus:ring-[#67A1B6] block w-full rounded-md sm:text-sm focus:ring-1
+}
+
 /* loadingpage */
 .loader {
 	border-top-color: #3498db;

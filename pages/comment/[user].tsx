@@ -23,8 +23,8 @@ const Comments = () => {
 
   if (loading) return <Loading />;
   return (
-    <div>
-      <p>Documentos rechazados {router.query.user}</p>
+    <div className='pplContainers'>
+      <div className='pplTitles'>Documentos rechazados</div>
       <div className='flex flex-col md:flex-row'>
         {data?.getRejectedDocument.map((doc) => (
           <RejectedDocument key={doc.id} pendingDoc={doc} />
@@ -67,9 +67,9 @@ const ListComments = ({ comments }) => {
   };
   return (
     <>
-      <span>Comentario: </span>
+      <span className='font-bold'>Comentario: </span>
       <span>{comments.comment}</span>
-      <span>Respuesta: </span>
+      <span className='font-bold'>Respuesta: </span>
       <span>{comments.response?.response}</span>
       {comments.response?.response === undefined ? (
         <div>
@@ -91,7 +91,7 @@ const ListComments = ({ comments }) => {
           </button>
         </div>
       ) : (
-        'esperando revisión del admin'
+        ' '
       )}
     </>
   );

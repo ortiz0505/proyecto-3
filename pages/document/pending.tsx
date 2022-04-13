@@ -125,47 +125,37 @@ const PendingDocument = ({ pendingDoc }) => {
         <span>{pendingDoc.createdAt}</span>
       </div>
       <div className='cardButtonP'>
-        <div className='flex flex-row justify-center'>
+        <div className='flex flex-row'>
           <button
+            className='approvalButtons'
             type='button'
             onClick={() => {
               acepptStatusDocument(pendingDoc);
             }}
           >
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              className='h-7 w-7 fill-green-500 mx-10 cursor-pointer'
-              viewBox='0 0 20 20'
-            >
-              <path
-                fillRule='evenodd'
-                d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z'
-                clipRule='evenodd'
-              />
-            </svg>
+            Aceptar
           </button>
-          <button type='button' onClick={() => setOpenCommentDialog(true)}>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              className='h-7 w-7 fill-red-500 mx-10 cursor-pointer'
-              viewBox='0 0 20 20'
-            >
-              <path
-                fillRule='evenodd'
-                d='M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z'
-                clipRule='evenodd'
+          <button
+            className='approvalButtons'
+            type='button'
+            onClick={() => setOpenCommentDialog(true)}
+          >
+            Rechazar
+          </button>
+          <Dialog open={openCommentDialog} onClose={closeDialog}>
+            <div className='m-5'>
+              <div className='dialogTitles'>Rechazar</div>
+              <span className='m-2 pplSpanLabels'>Comentario: </span>
+              <input
+                className='dialogInput'
+                name='comment'
+                placeholder='El documento tiene fallas'
+                onChange={(e) => setComment(e.target.value)}
               />
-            </svg>
-            <Dialog open={openCommentDialog} onClose={closeDialog}>
-              <div className='p-4 flex flex-col'>
-                <span>Comentario: </span>
-                <input
-                  name='comment'
-                  placeholder='El documento tiene fallas'
-                  onChange={(e) => setComment(e.target.value)}
-                />
+              <div className='flex flex-row mx-5'>
                 <button
                   type='button'
+                  className='dialogButtons'
                   onClick={async () => {
                     await rejectDocument(pendingDoc);
                     await createCommentDocument(pendingDoc);
@@ -173,11 +163,21 @@ const PendingDocument = ({ pendingDoc }) => {
                 >
                   Rechazar documento
                 </button>
+                <button
+                  type='button'
+                  className='dialogButtons'
+                  onClick={() => {
+                    setOpenCommentDialog(false);
+                  }}
+                >
+                  Cancelar
+                </button>
               </div>
-            </Dialog>
-          </button>
+            </div>
+          </Dialog>
           <button
             type='button'
+            className='approvalButtons'
             onClick={() => {
               setOpenEditDialog(true);
             }}
@@ -185,9 +185,11 @@ const PendingDocument = ({ pendingDoc }) => {
             Editar
           </button>
           <Dialog open={openEditDialog} onClose={closeDialog}>
-            <div className='p-5'>
-              <span>Nombre</span>
+            <div className='m-5'>
+              <div className='dialogTitles'>Editar</div>
+              <span className='m-2 pplSpanLabels'>Nombre</span>
               <input
+                className='dialogInput'
                 name='name'
                 placeholder='Nombre del documento'
                 onChange={(e) => {
@@ -201,26 +203,35 @@ const PendingDocument = ({ pendingDoc }) => {
                 successCallBack={successCallBack}
                 failureCallBack={failureCallBack}
               />
-              <button
-                type='button'
-                onClick={() => {
-                  editDocument(pendingDoc);
-                }}
-              >
-                Editar documento
-              </button>
-              <button
-                type='button'
-                onClick={() => {
-                  setOpenEditDialog(false);
-                }}
-              >
-                cerrar dialog
-              </button>
+              <div className='flex flex-row mx-5'>
+                <button
+                  type='button'
+                  className='dialogButtons'
+                  onClick={() => {
+                    editDocument(pendingDoc);
+                  }}
+                >
+                  Editar
+                </button>
+                <button
+                  type='button'
+                  className='dialogButtons'
+                  onClick={() => {
+                    setOpenEditDialog(false);
+                  }}
+                >
+                  Cerrar
+                </button>
+              </div>
             </div>
           </Dialog>
         </div>
-        <span className='cursor-pointer font-medium'>Descargar</span>
+        <span className='cursor-pointer font-medium hover:font-bold'>
+          <a target='_blank' rel='noreferrer' href={pendingDoc.url} download>
+            Descargar
+            <i className='fa-solid fa-file-arrow-down m-2'> </i>
+          </a>
+        </span>
       </div>
     </div>
   );

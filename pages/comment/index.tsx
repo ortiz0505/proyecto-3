@@ -15,8 +15,8 @@ const CommentIndex = () => {
   });
   if (loading) return <Loading />;
   return (
-    <div>
-      <div>Documentos con respuesta</div>
+    <div className='pplContainers'>
+      <div className='pplTitles'>Documentos con respuesta</div>
       <div className='flex flex-col md:flex-row'>
         {data?.getResponses.map((doc) => (
           <ListDocument key={doc.id} pendingDoc={doc} />
@@ -45,27 +45,33 @@ const ListDocument = ({ pendingDoc }) => {
     });
   };
   return (
-    <div className='flex flex-col'>
-      <span>Documento: </span>
-      <span>{pendingDoc.comment.document.name} </span>
-      <span>Tipo de documento: </span>
-      <span>{pendingDoc.comment.document.typeDocument.name} </span>
-      <span>Estado del documento: </span>
-      <span>{pendingDoc.comment.document.status} </span>
-      <span>Formato: </span>
-      <span>{pendingDoc.comment.document.typeDocument.format} </span>
-      <span>Comentario: </span>
-      <span>{pendingDoc.comment.comment} </span>
-      <span>Respuesta: </span>
-      <span>{pendingDoc.response} </span>
+    <div className='cardBodyP'>
+      <div className='cardTopP items-center'>
+        <span className='font-bold'>Documento: </span>
+        <span className='ml-1'>{pendingDoc.comment.document.name} </span>
+        <span className='font-bold'>Tipo de documento: </span>
+        <span className='ml-1'>
+          {pendingDoc.comment.document.typeDocument.name}{' '}
+        </span>
+        <span className='font-bold'>Estado del documento: </span>
+        <span className='ml-1'>{pendingDoc.comment.document.status} </span>
+        <span className='font-bold'>Formato: </span>
+        <span className='ml-1'>
+          {pendingDoc.comment.document.typeDocument.format}{' '}
+        </span>
+        <span className='font-bold'>Comentario: </span>
+        <span className='ml-1'>{pendingDoc.comment.comment} </span>
+        <span className='font-bold'>Respuesta: </span>
+        <span className='ml-1'>{pendingDoc.response} </span>
+      </div>
       <button
         type='button'
-        className='bg-green-300'
+        className='cardButton'
         onClick={() => {
           acepptStatusDocument(pendingDoc);
         }}
       >
-        aceptar documento
+        Aceptar documento
       </button>
     </div>
   );
