@@ -17,7 +17,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: from([
     new HttpLink({
-      uri: 'https://proyecto-3-git-dev-ortiz0505.vercel.app/api/graphql',
+      uri: 'https://proyecto-3-one.vercel.app/api/graphql',
     }),
   ]),
 });
