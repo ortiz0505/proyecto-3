@@ -1,12 +1,9 @@
-import { useSession } from 'next-auth/react';
-import Image from 'next/image';
+import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
 const Nav = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { data: session } = useSession();
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [showOptions, setShowOptions] = useState(false);
   const handleClick = () => {
     setShowOptions(!showOptions);
@@ -79,15 +76,15 @@ const Nav = () => {
             </li>
           </ul>
         </div>
-        <div className='flex items-center'>
-          <Image
-            alt='user Profile'
-            src={session.user.image}
-            width='40'
-            height='40'
-            className='rounded-full'
-          />
-        </div>
+        <button
+          type='button'
+          onClick={() => {
+            signOut();
+          }}
+          className='flex items-center'
+        >
+          Cerrar sesión
+        </button>
       </nav>
     </div>
   );
