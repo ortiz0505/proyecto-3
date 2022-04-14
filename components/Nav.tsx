@@ -1,9 +1,8 @@
-import { signOut, useSession } from 'next-auth/react';
+import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 import React, { useState } from 'react';
 
 const Nav = () => {
-  const { data: session } = useSession();
   const [showOptions, setShowOptions] = useState(false);
   const handleClick = () => {
     setShowOptions(!showOptions);
