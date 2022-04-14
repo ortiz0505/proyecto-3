@@ -79,55 +79,85 @@ const Home: NextPage = () => {
   if (loading) return <Loading />;
 
   return (
-    <div className='pplContainers flex flex-row'>
-      <div className='flex flex-col p-2'>
+    <div className='pplContainers flex flex-col'>
+      <div className='flex flex-col md:flex-row p-2'>
         <Image
           alt='user Profile'
           src={data.getProfiles[0].customImage || session.user.image}
           width='100'
           height='100'
-          className='rounded-full'
+          className='rounded-full w-1/3'
         />
-        <span>Nombre: {data.getProfiles[0].customName}</span>
-        <span>Identificacion: {data.getProfiles[0].identification}</span>
-        <span>Direccion: {data.getProfiles[0].location}</span>
-        <span>Celular: {data.getProfiles[0].phone}</span>
+        <div className='grid grid-cols-2 gap-2 p-5'>
+          <span className='text-[#306D81] font-bold'>Nombre:</span>
+          <span>{data.getProfiles[0].customName}</span>
+          <span className='text-[#306D81] font-bold'>Identificacion:</span>
+          <span>{data.getProfiles[0].identification}</span>
+          <span className='text-[#306D81] font-bold'>Direccion:</span>
+          <span>{data.getProfiles[0].location}</span>
+          <span className='text-[#306D81] font-bold'>Celular:</span>
+          <span>{data.getProfiles[0].phone}</span>
+        </div>
       </div>
-
+      <div className='flex flex-col md:flex-row text-center w-full place-content-center'>
+        <PrivateComponent roleList={['Admin']}>
+          <Link href='/document/type' passHref>
+            <div className='pplButtons my-3'>Crear tipo de documento</div>
+          </Link>
+          <Link href='/document/pending' passHref>
+            <div className='pplButtons my-3'>Documentos pendientes</div>
+          </Link>
+        </PrivateComponent>
+      </div>
       <form ref={form} onChange={updateFormData} onSubmit={submitForm}>
-        <label htmlFor='name'>
-          <span>Nombre: </span>
-          <input name='name' defaultValue={data.getProfiles[0].customName} />
-        </label>
-        <label htmlFor='location'>
-          <span>Direccion: </span>
-          <input name='location' defaultValue={data.getProfiles[0].location} />
-        </label>
-        <label htmlFor='phone'>
-          <span>Celular: </span>
-          <input name='phone' defaultValue={data.getProfiles[0].phone} />
-        </label>
-        <label htmlFor='identification'>
-          <span>Identificacion: </span>
+        <div className='pplTitles'>Actualizar información</div>
+        <label className='pplLabels' htmlFor='name'>
+          <span className='pplSpanLabels'>Nombre: </span>
           <input
+            className='pplInputTxt'
+            name='name'
+            defaultValue={data.getProfiles[0].customName}
+          />
+        </label>
+        <label className='pplLabels' htmlFor='location'>
+          <span className='pplSpanLabels'>Direccion: </span>
+          <input
+            className='pplInputTxt'
+            name='location'
+            defaultValue={data.getProfiles[0].location}
+          />
+        </label>
+        <label className='pplLabels' htmlFor='phone'>
+          <span className='pplSpanLabels'>Celular: </span>
+          <input
+            className='pplInputTxt'
+            name='phone'
+            defaultValue={data.getProfiles[0].phone}
+          />
+        </label>
+        <label className='pplLabels' htmlFor='identification'>
+          <span className='pplSpanLabels'>Identificacion: </span>
+          <input
+            className='pplInputTxt'
             name='identification'
             defaultValue={data.getProfiles[0].identification}
           />
         </label>
         <input name='image' value={template} readOnly hidden />
         <input name='id' value={session.userId as string} readOnly hidden />
-        <FileUpload
-          folder='document'
-          resourceType='auto'
-          text='Subir archivo'
-          successCallBack={successCallBack}
-          failureCallBack={failureCallBack}
-        />
-        <button type='submit'> Actualizar perfil </button>
+        <div className='flex flex-col lg:flex-row my-5'>
+          <FileUpload
+            folder='document'
+            resourceType='auto'
+            text='Subir archivo'
+            successCallBack={successCallBack}
+            failureCallBack={failureCallBack}
+          />
+          <button className='pplButtons m-2' type='submit'>
+            Actualizar perfil
+          </button>
+        </div>
       </form>
-      <PrivateComponent roleList={['Admin']}>
-        <Link href='/document/type'>Crear tipo de documento</Link>
-      </PrivateComponent>
     </div>
   );
 };
