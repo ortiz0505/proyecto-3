@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@apollo/client';
 import FileUpload from '@components/FileUpload';
-import Loading from '@components/Loading';
+import Lod from '@components/Lod';
 import { UPDATE_DOCUMENT } from 'graphql/mutations/document';
 import { GET_REJECTED_DOCUMENTS } from 'graphql/queries/document';
 import React, { useState } from 'react';
@@ -16,7 +16,7 @@ const Rejected = () => {
     fetchPolicy: 'cache-and-network',
   });
 
-  if (loading) return <Loading />;
+  if (loading) return <Lod />;
 
   return (
     <div className='pplContainers'>

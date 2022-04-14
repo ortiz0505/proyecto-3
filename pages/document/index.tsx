@@ -3,11 +3,15 @@ import React, { useEffect, useState } from 'react';
 import { GET_DOCUMENT_TYPE } from 'graphql/queries/document-type';
 import { matchRoles } from 'utils/matchRoles';
 import { useQuery } from '@apollo/client';
+<<<<<<< HEAD
 import Loading from '@components/Loading';
+=======
+>>>>>>> dev
 import PrivateComponent from '@components/PrivateComponent';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { GET_CHART } from 'graphql/queries/chart';
+import Lod from '@components/Lod';
 
 const ReactApexChart = dynamic(
   () => {
@@ -54,7 +58,7 @@ const Index = () => {
     }
   }, [dataChart]);
 
-  if (loading || loadingChart) return <Loading />;
+  if (loading || loadingChart) return <Lod />;
   return (
     <div className='pplContainers'>
       <div className='flex flex-col md:flex-row md:justify-between'>
