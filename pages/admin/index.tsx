@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from '@apollo/client';
-import Loading from '@components/Loading';
+import Lod from '@components/Lod';
 import { Dialog } from '@mui/material';
 import { UPDATE_USER } from 'graphql/mutations/user';
 import { GET_USERS } from 'graphql/queries/user';
@@ -15,7 +15,7 @@ const IndexAdmin = () => {
     fetchPolicy: 'cache-and-network',
   });
 
-  if (loading) return <Loading />;
+  if (loading) return <Lod />;
 
   return (
     <div className='pplContainers'>

@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from '@apollo/client';
-import Loading from '@components/Loading';
+import Lod from '@components/Lod';
 import PrivateComponent from '@components/PrivateComponent';
 import { UPDATE_DOCUMENT } from 'graphql/mutations/document';
 import { GET_RESPONSED_DOCUMENT } from 'graphql/queries/response';
@@ -17,7 +17,7 @@ const CommentIndex = () => {
   const { data, loading } = useQuery(GET_RESPONSED_DOCUMENT, {
     fetchPolicy: 'cache-and-network',
   });
-  if (loading) return <Loading />;
+  if (loading) return <Lod />;
   return (
     <div className='pplContainers'>
       <div className='flex flex-col md:flex-row md:justify-between'>

@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@apollo/client';
 import FileUpload from '@components/FileUpload';
-import Loading from '@components/Loading';
+import Lod from '@components/Lod';
 import PrivateComponent from '@components/PrivateComponent';
 import { UPSERT_PROFILE } from 'graphql/mutations/profile';
 import { GET_PROFILES } from 'graphql/queries/profile';
@@ -76,7 +76,7 @@ const Home: NextPage = () => {
       },
     });
   };
-  if (loading) return <Loading />;
+  if (loading) return <Lod />;
 
   return (
     <div className='pplContainers flex flex-col'>

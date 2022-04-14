@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from '@apollo/client';
 import FileUpload from '@components/FileUpload';
-import Loading from '@components/Loading';
+import Lod from '@components/Lod';
 import { Dialog } from '@mui/material';
 import { CREATE_COMMENT } from 'graphql/mutations/comment';
 import { UPDATE_DOCUMENT } from 'graphql/mutations/document';
@@ -19,7 +19,7 @@ const Pending = () => {
     fetchPolicy: 'cache-and-network',
   });
 
-  if (loading) return <Loading />;
+  if (loading) return <Lod />;
 
   return (
     <div className='pplContainers'>
