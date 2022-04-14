@@ -91,9 +91,9 @@ const Home: NextPage = () => {
         <div className='grid grid-cols-2 gap-2 p-5'>
           <span className='text-[#306D81] font-bold'>Nombre:</span>
           <span>{data.getProfiles[0].customName || session.user.name}</span>
-          <span className='text-[#306D81] font-bold'>Identificacion:</span>
+          <span className='text-[#306D81] font-bold'>Identificación:</span>
           <span>{data.getProfiles[0].identification || 'sin registrar'}</span>
-          <span className='text-[#306D81] font-bold'>Direccion:</span>
+          <span className='text-[#306D81] font-bold'>Dirección:</span>
           <span>{data.getProfiles[0].location || 'sin registrar'}</span>
           <span className='text-[#306D81] font-bold'>Celular:</span>
           <span>{data.getProfiles[0].phone || 'sin registrar'}</span>
@@ -123,7 +123,7 @@ const Home: NextPage = () => {
           />
         </label>
         <label className='pplLabels' htmlFor='location'>
-          <span className='pplSpanLabels'>Direccion: </span>
+          <span className='pplSpanLabels'>Dirección: </span>
           <input
             className='pplInputTxt'
             name='location'
@@ -139,7 +139,7 @@ const Home: NextPage = () => {
           />
         </label>
         <label className='pplLabels' htmlFor='identification'>
-          <span className='pplSpanLabels'>Identificacion: </span>
+          <span className='pplSpanLabels'>Identificación: </span>
           <input
             className='pplInputTxt'
             name='identification'
