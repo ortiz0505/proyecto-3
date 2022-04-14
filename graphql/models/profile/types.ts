@@ -27,6 +27,14 @@ const ProfileTypes = gql`
     userId: String
   }
 
+  input ProfileUpdateInput {
+    customName: StringEditField
+    customImage: StringEditField
+    location: StringEditField
+    phone: StringEditField
+    identification: StringEditField
+  }
+
   type Query {
     getProfiles: [Profile]
     getProfile(where: ProfileFilterId!): Profile
@@ -34,6 +42,11 @@ const ProfileTypes = gql`
 
   type Mutation {
     createProfile(data: ProfileCreateInput!): Profile
+    upsertProfile(
+      where: ProfileFilterId!
+      create: ProfileCreateInput
+      update: ProfileUpdateInput
+    ): Profile
   }
 `;
 

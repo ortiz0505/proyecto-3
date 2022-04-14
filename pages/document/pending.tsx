@@ -122,7 +122,7 @@ const PendingDocument = ({ pendingDoc }) => {
         <span className='font-bold'>Creado por:</span>
         <span>{pendingDoc.createdBy.name}</span>
         <span className='font-bold'>Fecha de creación:</span>
-        <span>{pendingDoc.createdAt}</span>
+        <span>{new Date(pendingDoc.createdAt).toLocaleDateString()}</span>
       </div>
       <div className='cardButtonP'>
         <div className='flex flex-row'>

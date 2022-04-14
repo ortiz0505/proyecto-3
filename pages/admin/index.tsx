@@ -1,7 +1,9 @@
-import { useQuery } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import Loading from '@components/Loading';
+import { Dialog } from '@mui/material';
+import { UPDATE_USER } from 'graphql/mutations/user';
 import { GET_USERS } from 'graphql/queries/user';
-import React from 'react';
+import React, { useState } from 'react';
 import { matchRoles } from 'utils/matchRoles';
 
 export const getServerSideProps = async (context) => ({
@@ -48,6 +50,55 @@ const IndexAdmin = () => {
 };
 
 const ListUsers = ({ user }) => {
+  const [openEditDialog, setOpenEditDialog] = useState(false);
+  const closeDialog = () => {
+    setOpenEditDialog(false);
+  };
+  const [updateUser] = useMutation(UPDATE_USER, {
+    refetchQueries: [GET_USERS],
+  });
+  const adminRole = async (e) => {
+    await updateUser({
+      variables: {
+        where: {
+          id: e.id,
+        },
+        data: {
+          roleId: {
+            set: 'cl1mx8t510070o8w25nzf2jzb',
+          },
+        },
+      },
+    });
+  };
+  const developerRole = async (e) => {
+    await updateUser({
+      variables: {
+        where: {
+          id: e.id,
+        },
+        data: {
+          roleId: {
+            set: 'cl1mx8t510074o8w28oa50ck7',
+          },
+        },
+      },
+    });
+  };
+  const documenterRole = async (e) => {
+    await updateUser({
+      variables: {
+        where: {
+          id: e.id,
+        },
+        data: {
+          roleId: {
+            set: 'cl1mx8t510072o8w2o0vxcv2x',
+          },
+        },
+      },
+    });
+  };
   return (
     <tr className='bg-[#E6F4F1]'>
       <th scope='row' className='px-6 py-4 font-medium'>
@@ -55,9 +106,39 @@ const ListUsers = ({ user }) => {
       </th>
       <td className='px-6 py-4'>{user.email}</td>
       <td className='px-6 py-4'>{user.role.name}</td>
-      <td className='px-6 py-4 text-right hover:text-black cursor-pointer'>
+      <button
+        type='button'
+        className='px-6 py-4 text-right hover:text-black cursor-pointer'
+        onClick={() => setOpenEditDialog(true)}
+      >
         Editar rol
-      </td>
+      </button>
+      <Dialog open={openEditDialog} onClose={closeDialog}>
+        <button
+          type='button'
+          onClick={() => {
+            adminRole(user);
+          }}
+        >
+          Cambiar a Admin
+        </button>
+        <button
+          type='button'
+          onClick={() => {
+            developerRole(user);
+          }}
+        >
+          Cambiar a Developer
+        </button>
+        <button
+          type='button'
+          onClick={() => {
+            documenterRole(user);
+          }}
+        >
+          Cambiar a Documenter
+        </button>
+      </Dialog>
     </tr>
   );
 };

@@ -2,7 +2,7 @@ import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import PrivateComponent from './PrivateComponent';
+import PrivateComponent from 'components/PrivateComponent';
 
 const NavBar = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -42,7 +42,9 @@ const NavBar = () => {
             </li>
             <li className='liSideBar'>Link 2</li>
             <PrivateComponent roleList={['Admin']}>
-              <li className='liSideBar'>Administración</li>
+              <Link href='./admin' passHref>
+                <li className='liSideBar'>Admin</li>
+              </Link>
             </PrivateComponent>
           </ul>
         </div>
@@ -71,11 +73,13 @@ const NavBar = () => {
         <div className='hidden md:flex'>
           <ul className='flex flex-row items-center'>
             <li className='liNavBar'>
-              <Link href='document'>Documentos</Link>
+              <Link href='/document'>Documentos</Link>
             </li>
             <li className='liNavBar'>Link 2</li>
             <PrivateComponent roleList={['Admin']}>
-              <li className='liNavBar'>Administración</li>
+              <Link href='./admin' passHref>
+                <li className='liNavBar'>Admin</li>
+              </Link>
             </PrivateComponent>
           </ul>
         </div>
