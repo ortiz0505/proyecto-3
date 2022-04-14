@@ -69,6 +69,9 @@ const Nav = () => {
         <div className='hidden md:flex'>
           <ul className='flex flex-row items-center'>
             <li className='liNavBar'>
+              <Link href='/'>Inicio</Link>
+            </li>
+            <li className='liNavBar'>
               <Link href='/document'>Plantillas</Link>
             </li>
             <li className='liNavBar'>

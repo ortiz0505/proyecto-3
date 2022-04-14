@@ -90,13 +90,13 @@ const Home: NextPage = () => {
         />
         <div className='grid grid-cols-2 gap-2 p-5'>
           <span className='text-[#306D81] font-bold'>Nombre:</span>
-          <span>{data.getProfiles[0].customName}</span>
+          <span>{data.getProfiles[0].customName || session.user.name}</span>
           <span className='text-[#306D81] font-bold'>Identificacion:</span>
-          <span>{data.getProfiles[0].identification}</span>
+          <span>{data.getProfiles[0].identification || 'sin registrar'}</span>
           <span className='text-[#306D81] font-bold'>Direccion:</span>
-          <span>{data.getProfiles[0].location}</span>
+          <span>{data.getProfiles[0].location || 'sin registrar'}</span>
           <span className='text-[#306D81] font-bold'>Celular:</span>
-          <span>{data.getProfiles[0].phone}</span>
+          <span>{data.getProfiles[0].phone || 'sin registrar'}</span>
         </div>
       </div>
       <div className='flex flex-col md:flex-row text-center w-full place-content-center'>
