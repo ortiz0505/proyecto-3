@@ -145,16 +145,6 @@ const Home: NextPage = () => {
         </label>
         <input name='image' value={template} readOnly hidden />
         <input name='id' value={session.userId as string} readOnly hidden />
-<<<<<<< HEAD
-        <FileUpload
-          folder='document'
-          resourceType='auto'
-          text='Subir archivo'
-          successCallBack={successCallBack}
-          failureCallBack={failureCallBack}
-        />
-        <button type='submit'> Actualizar perfil </button>
-=======
         <div className='flex flex-col lg:flex-row my-5'>
           <FileUpload
             folder='document'
@@ -167,7 +157,6 @@ const Home: NextPage = () => {
             Actualizar perfil
           </button>
         </div>
->>>>>>> dev
       </form>
     </div>
   );
