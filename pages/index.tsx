@@ -107,6 +107,9 @@ const Home: NextPage = () => {
           <Link href='/document/pending' passHref>
             <div className='pplButtons my-3'>Documentos pendientes</div>
           </Link>
+          <Link href='/admin' passHref>
+            <div className='pplButtons my-3'>Ver usuarios</div>
+          </Link>
         </PrivateComponent>
       </div>
       <form ref={form} onChange={updateFormData} onSubmit={submitForm}>
