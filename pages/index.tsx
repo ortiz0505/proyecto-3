@@ -115,7 +115,7 @@ const Home: NextPage = () => {
           />
         </label>
         <input name='image' value={template} readOnly hidden />
-        <input name='id' value={session.user.id} readOnly hidden />
+        <input name='id' value={session.userId as string} readOnly hidden />
         <FileUpload
           folder='document'
           resourceType='auto'

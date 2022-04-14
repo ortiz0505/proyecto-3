@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { GET_DOCUMENT_TYPE } from 'graphql/queries/document-type';
 import { matchRoles } from 'utils/matchRoles';
 import { useQuery } from '@apollo/client';
-import Loading from 'components/Loading';
+import Loading from '@components/Loading';
 import PrivateComponent from '@components/PrivateComponent';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
