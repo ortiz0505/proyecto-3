@@ -5,7 +5,6 @@ import { ToastContainer } from 'react-toastify';
 import Nav from '@components/Nav';
 import Lod from '@components/Lod';
 
-
 const PrivateLayout = ({ children }: any) => {
   const { data: session, status } = useSession();
 
