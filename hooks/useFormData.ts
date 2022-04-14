@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 
 const useFormData = (initial) => {
   const form = useRef(initial);
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState<any>({});
   const getFormData = () => {
     const fd = new FormData(form.current);
     const obj = {};
