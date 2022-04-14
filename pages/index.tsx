@@ -86,7 +86,7 @@ const Home: NextPage = () => {
           src={data.getProfiles[0].customImage || session.user.image}
           width='100'
           height='100'
-          className='rounded-full w-1/3'
+          className='w-full'
         />
         <div className='grid grid-cols-2 gap-2 p-5'>
           <span className='text-[#306D81] font-bold'>Nombre:</span>
